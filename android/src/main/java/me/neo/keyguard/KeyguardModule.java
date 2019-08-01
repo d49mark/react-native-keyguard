@@ -22,7 +22,7 @@ import static android.content.Context.KEYGUARD_SERVICE;
  */
 public class KeyguardModule extends ReactContextBaseJavaModule {
     private ReactApplicationContext mContext;
-    private static final int KEYGUARD_REQUEST = 467081;
+    private static final int KEYGUARD_REQUEST = 65535;
     private static final String E_ACTIVITY_DOES_NOT_EXIST = "E_ACTIVITY_DOES_NOT_EXIST";
     private static final String E_FAILED_TO_SHOW_KEYGUARD = "E_FAILED_TO_SHOW_KEYGUARD";
     private static final String E_KEYGUARD_CANCELLED = "E_KEYGUARD_CANCELLED";
@@ -31,7 +31,7 @@ public class KeyguardModule extends ReactContextBaseJavaModule {
     private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
         @Override
         public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {
-            if (requestCode != KEYGUARD_REQUEST)
+            if (requestCode != KEYGUARD_REQUEST || requestCode != 467081)
                 return;
             if (mKeyguardPromise == null)
                 return;
